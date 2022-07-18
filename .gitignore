@@ -1,4 +1,4 @@
 # Ignore config.py file and folders below
-config.py
+# config.py
 /.ipynb_checkpoints
 /__pycache__
