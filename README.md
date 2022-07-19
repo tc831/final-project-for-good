@@ -2,7 +2,13 @@
 
 ## Project Overview
 
-In this project, we'll predict the winner of football matches in the English Premier League (EPL).  
+Our group’s final project topic is to create an application to make a prediction of the winning team of the English Premier League by using match historical data. 
+The data source that we have chosen to use contains information from 2017 to 2022 which consists of team names, Goals For, Goals against, expected goal, expected goals against. 
+
+The idea is to gather the data, then use historic win-loss-draw with Goals For and against to get prediction on the selected match.
+
+The method and language used are Python, Pandas, Postgres and Tableau. Once the data was cleaned we used ML to then populate the results shown on 
+
 
 **Project Steps**
 
