@@ -1,0 +1,123 @@
+import pandas as pd
+import requests
+
+# def retrieve_data():
+# Retrieve data
+# standings_url = "https://fbref.com/en/comps/9/Premier-League-Stats"
+# data = requests.get(standings_url)
+
+# from bs4 import BeautifulSoup
+# soup = BeautifulSoup(data.text)
+# standings_table = soup.select('table.stats_table')[0]
+# links = standings_table.find_all('a')
+# links = [l.get("href") for l in links]
+# links = [l for l in links if '/squads/' in l]
+
+# team_urls = [f"https://fbref.com{l}" for l in links]
+
+# data = requests.get(team_urls[0])
+
+# matches = pd.read_html(data.text, match="Scores & Fixtures")[0]
+
+# soup = BeautifulSoup(data.text)
+# links = soup.find_all('a')
+# links = [l.get("href") for l in links]
+# links = [l for l in links if l and 'all_comps/shooting/' in l]
+
+# data = requests.get(f"https://fbref.com{links[0]}")
+
+# shooting = pd.read_html(data.text, match="Shooting")[0]
+
+# shooting.columns = shooting.columns.droplevel()
+
+# team_data = matches.merge(shooting[["Date", "Sh", "SoT", "Dist", "FK", "PK", "PKatt"]], on="Date")
+
+# years = list(range(2022, 2018, -1))
+# # print(years)
+# all_matches = []
+
+# standings_url = "https://fbref.com/en/comps/9/Premier-League-Stats"
+
+# import time
+# for year in years:
+#     data = requests.get(standings_url)
+#     soup = BeautifulSoup(data.text)
+#     standings_table = soup.select('table.stats_table')[0]
+
+#     links = [l.get("href") for l in standings_table.find_all('a')]
+#     links = [l for l in links if '/squads/' in l]
+#     team_urls = [f"https://fbref.com{l}" for l in links]
+    
+#     previous_season = soup.select("a.prev")[0].get("href")
+#     standings_url = f"https://fbref.com{previous_season}"
+    
+#     for team_url in team_urls:
+#         team_name = team_url.split("/")[-1].replace("-Stats", "").replace("-", " ")
+#         data = requests.get(team_url)
+#         matches = pd.read_html(data.text, match="Scores & Fixtures")[0]
+#         soup = BeautifulSoup(data.text)
+#         links = [l.get("href") for l in soup.find_all('a')]
+#         links = [l for l in links if l and 'all_comps/shooting/' in l]
+#         data = requests.get(f"https://fbref.com{links[0]}")
+#         time.sleep(5)
+#         shooting = pd.read_html(data.text, match="Shooting")[0]
+#         shooting.columns = shooting.columns.droplevel()
+#         try:
+#             team_data = matches.merge(shooting[["Date", "Sh", "SoT", "Dist", "FK", "PK", "PKatt"]], on="Date")
+#         except ValueError:
+#             continue
+#         team_data = team_data[team_data["Comp"] == "Premier League"]
+        
+#         team_data["Season"] = year
+#         team_data["Team"] = team_name
+#         all_matches.append(team_data)
+#         time.sleep(3)
+# match2_df = pd.concat(all_matches)
+
+# match2_df.columns = [c.lower() for c in match2_df.columns]
+
+# # Dataframe clean
+data_file = "Resources/matches_2.csv"
+data_file_df = pd.read_csv(data_file)
+data_file_df
+matches_df = data_file_df.drop(columns=['Unnamed: 0', 'notes'], axis=1)
+
+matches_final = matches_df.drop_duplicates(subset=['date', 'time', 'comp', 'round', 'day', 'venue', 'result',
+    'gf', 'ga', 'opponent', 'xg', 'xga', 'poss', 'attendance', 'captain',
+    'formation', 'referee', 'match report', 'sh', 'sot', 'dist',
+    'fk', 'pk', 'pkatt', 'season', 'team'])
+
+# return matches_final
+import os
+import psycopg2
+from config import password
+
+# password = ['password']
+conn = psycopg2.connect(
+        host="localhost",
+        database="final_project",
+        user='postgres',
+        password=['password'])
+
+# Open a cursor to perform database operations
+cur = conn.cursor()
+
+# Execute a command: this creates a new table
+cur.execute('DROP TABLE IF EXISTS matches_final CASCADE;')
+cur.execute('CREATE TABLE matches_final (date DATE, ' 
+            'time VARCHAR, comp VARCHAR, round VARCHAR, '
+            'day VARCHAR, venue VARCHAR, result VARCHAR, ' 
+            'gf INT, ga INT, opponent VARCHAR, xg FLOAT, '
+            'xga FLOAT, poss FLOAT, attendance FLOAT, ' 
+            'captain VARCHAR, formation VARCHAR, referee VARCHAR, '
+            'match_report VARCHAR, sh FLOAT, sot FLOAT, ' 
+            'dist FLOAT, fk FLOAT, pk FLOAT, pkatt FLOAT, season FLOAT, '
+            'team VARCHAR);'
+            )
+conn.commit()
+cur.close()
+conn.close()
+
+
+    
+    # return matches_final

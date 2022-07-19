@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Matches {% endblock %}</h1>
+    {% for result in results %}
+        <div class='book'>
+            <h3>#{{ result[0] }} - {{ result[1] }} BY {{ result[2] }}</h3>
+            <i><p>({{ result[3] }} pages)</p></i>
+            <p class='review'>{{ result[4] }}</p>
+            <i><p>Added {{ result[5] }}</p></i>
+        </div>
+    {% endfor %}
+{% endblock %}
