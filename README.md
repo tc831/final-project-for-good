@@ -14,10 +14,14 @@ The method and language used are Python, Pandas, Postgres and Tableau. Once the 
 You can find the code for this project [here](https://github.com/tc831/final-project-for-good)
 File overview:
 
-* `Folder: "ipynb_checkpoints"
-* `predictions.ipynb` - a Jupyter notebook that makes predictions.
+* Folder: ipynb_checkpoints
+* Resources
+* config.py
+* data_clean.ipynb
+* project_3_scraping.ipynb
+* schema.sql
 
-# Local Setup
+
 
 ## Installation
 
