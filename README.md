@@ -9,21 +9,12 @@ The idea is to gather the data, then use historic win-loss-draw with Goals For a
 
 The method and language used are Python, Pandas, Postgres and Tableau. Once the data was cleaned we used ML to then populate the results shown on 
 
-
-**Project Steps**
-
-* Scrape match data using requests, BeautifulSoup, and pandas.  
-* Clean the data and get it ready for machine learning using pandas.
-* Make predictions about who will win a match using scikit-learn.
-* Measure error and improve our predictions.
-
 ## Code
 
-You can find the code for this project [here](https://github.com/dataquestio/project-walkthroughs/tree/master/football_matches).
-
+You can find the code for this project [here](https://github.com/tc831/final-project-for-good)
 File overview:
 
-* `scraping.ipynb` - a Jupyter notebook that scrapes our data.
+* `Folder: "ipynb_checkpoints"
 * `predictions.ipynb` - a Jupyter notebook that makes predictions.
 
 # Local Setup
