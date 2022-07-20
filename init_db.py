@@ -76,49 +76,48 @@ def scrape_data():
 
 def retrieve_file():
     import pandas as pd
-    from sqlalchemy import create_engine
+
     # Dataframe clean
     data_file = "Resources/matches_2.csv"
     data_file_df = pd.read_csv(data_file)
-    data_file_df
+
     matches_df = data_file_df.drop(columns=['Unnamed: 0', 'notes'], axis=1)
+
 
     matches_final = matches_df.drop_duplicates(subset=['date', 'time', 'comp', 'round', 'day', 'venue', 'result',
         'gf', 'ga', 'opponent', 'xg', 'xga', 'poss', 'attendance', 'captain',
         'formation', 'referee', 'match report', 'sh', 'sot', 'dist',
         'fk', 'pk', 'pkatt', 'season', 'team'])
 
+    matches_final = matches_final.rename(columns={'match report': 'match_report'})
     matches_final.to_csv("Resources\matches_final.csv", index=False)
-    
-    import os
-    import psycopg2
+
+    from sqlalchemy import create_engine
+    from sqlalchemy_utils import database_exists, create_database
+
     from config import password
 
-    password = ['password']
-    conn = psycopg2.connect(
-            host="localhost",
-            database="final_project",
-            user='postgres',
-            password=['password'])
+    url = f'postgresql://postgres:{password}@localhost:5432/final_project'
+    engine = create_engine(url)
 
-    # Open a cursor to perform database operations
-    cur = conn.cursor()
-
+    # Create database if doesn't exist
+    if not database_exists(engine.url):
+        create_database(engine.url)
+    else:
+        # Connect the database if exists.
+        engine.connect()
     # Execute a command: this creates a new table
-    cur.execute('DROP TABLE IF EXISTS matches_final CASCADE;')
-    cur.execute('CREATE TABLE matches_final (date DATE, ' 
+    engine.execute('DROP TABLE IF EXISTS matches_final CASCADE;')
+    engine.execute('CREATE TABLE matches_final (id INT, date DATE, ' 
                 'time VARCHAR, comp VARCHAR, round VARCHAR, '
                 'day VARCHAR, venue VARCHAR, result VARCHAR, ' 
                 'gf INT, ga INT, opponent VARCHAR, xg FLOAT, '
                 'xga FLOAT, poss FLOAT, attendance FLOAT, ' 
                 'captain VARCHAR, formation VARCHAR, referee VARCHAR, '
                 'match_report VARCHAR, sh FLOAT, sot FLOAT, ' 
-                'dist FLOAT, fk FLOAT, pk FLOAT, pkatt FLOAT, season FLOAT, '
+                'dist FLOAT, fk FLOAT, pk FLOAT, pkatt FLOAT, season INT, '
                 'team VARCHAR);'
                 )
-    
-    conn.commit()
-    cur.close()
-    conn.close()
+    matches_final.to_sql('matches_final', con=engine, if_exists='replace')
 
     return matches_final

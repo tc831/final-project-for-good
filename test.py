@@ -1,16 +1,11 @@
 from tokenize import String
-from flask import Flask, jsonify, redirect, render_template
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from config import password
-import init_db
-import pandas as pd
-import os
 
 url = f'postgresql://postgres:{password}@localhost:5432/final_project'
 # engine = create_engine(url)
 app = Flask(__name__)
-app = Flask(__name__, static_folder="templates")
-
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = url
 app.debug = True
@@ -18,7 +13,7 @@ db = SQLAlchemy(app)
 
 class matches(db.Model):
     __tablename__ = "matches_final"
-    index = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     date = db.Column(db.Date(), nullable=False)
     time = db.Column(db.String(), nullable=False)
     comp = db.Column(db.String(), nullable=False)
@@ -74,47 +69,10 @@ class matches(db.Model):
         self.season = season 
         self.team = team
 
-@app.route("/")
-def index():
-    return render_template('index.html')
 
-@app.route("/renew_data")
-def renew_data():
-    # init_db.scrape_data()
-    init_db.retrieve_file()
-    return redirect("/")
-
-@app.route("/api", methods=['GET'])
-def getMatchData():
-    alldata = matches.query.all()
-    output = []
-    for match in alldata:
-        dataoutput = {}
-        dataoutput['date'] =  match.date
-        dataoutput['time'] =  match.time
-        dataoutput['comp'] =  match.comp
-        dataoutput['round'] =  match.round
-        dataoutput['day'] =  match.day 
-        dataoutput['venue'] =  match.venue 
-        dataoutput['result'] =  match.result
-        dataoutput['gf'] =  match.gf
-        dataoutput['ga'] =  match.ga
-        dataoutput['opponent'] =  match.opponent 
-        dataoutput['xg'] =  match.xg 
-        dataoutput['xga'] =  match.xga
-        dataoutput['poss'] =  match.poss
-        dataoutput['attendance'] =  match.attendance 
-        dataoutput['captain'] =  match.captain
-        dataoutput['formation'] =  match.formation
-        dataoutput['referee'] =  match.referee
-        dataoutput['match_report'] =  match.match_report
-        dataoutput['sh'] =  match.sh
-        dataoutput['sot'] =  match.sot
-        dataoutput['dist'] =  match.dist
-        dataoutput['fk'] =  match.fk
-        dataoutput['pk'] =  match.pk 
-        dataoutput['pkatt'] =  match.pkatt
-        dataoutput['season'] =  match.season 
-        dataoutput['team'] =  match.team
-        output.append(dataoutput)
-    return jsonify(output)
+# @app.route("/data", methods=['GET'])
+# def getMatchData():
+#     alldata = matches_final.query.all()
+#     output = []
+#     for match in alldata:
+#         curr
