@@ -1,4 +1,11 @@
 # Final Project For Good
+## Group members:
+* Hiu Lai
+* Joanna Sacharz
+* Maica Tran
+* Sak Qasse
+* David Cheung
+
 
 ## Project Overview
 
