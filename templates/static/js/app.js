@@ -1,6 +1,10 @@
 function initViz() {
+	_ParamA = "Manchester City"
+
 	var containerDiv = document.getElementById("vizContainer"),
-		url_home = "https://public.tableau.com/views/TeamStats_16582409510560/HomeTeam",
+
+		url_home ="https://public.tableau.com/views/TeamStats/HomeTeam?:showVizHome=no&TeamA_param=" + _ParamA
+		
 		
 		options = {
 			hideTabs: true,
@@ -12,7 +16,8 @@ function initViz() {
 	var viz = new tableau.Viz(containerDiv, url_home, options);
 	
 	var containerDiv1 = document.getElementById("vizContainer1"),
-	url_away = "https://public.tableau.com/views/TeamStats_16582409510560/AwayTeam",
+	_ParamB ="Chelsea"
+	url_away = "https://public.tableau.com/views/TeamStats/AwayTeam?:showVizHome=no&TeamA_param=" + _ParamB
 	
 	options = {
 		hideTabs: true,
