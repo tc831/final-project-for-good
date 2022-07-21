@@ -1,5 +1,5 @@
 from tokenize import String
-from flask import Flask, jsonify, redirect, render_template
+from flask import Flask, jsonify, redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from config import password
 import init_db
@@ -77,6 +77,13 @@ class matches(db.Model):
 @app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route("/selection", methods=['POST', 'GET'])
+def selection():
+    print(request.form)
+    teamA = request.form['TeamA']
+    teamB = request.form['TeamB']
+    return render_template('selection.html')
 
 @app.route("/renew_data")
 def renew_data():
