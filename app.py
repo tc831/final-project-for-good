@@ -78,12 +78,15 @@ class matches(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route("/selection", methods=['POST', 'GET'])
+@app.route("/", methods=['POST', 'GET'])
 def selection():
-    print(request.form)
-    teamA = request.form['TeamA']
-    teamB = request.form['TeamB']
-    return render_template('selection.html')
+    if request.method=='POST':
+        print(request.form)
+        teamA = request.form['TeamA']
+        teamB = request.form['TeamB']
+        return render_template('index.html')
+    else:
+        return render_template('index.html')        
 
 @app.route("/renew_data")
 def renew_data():
