@@ -12,44 +12,42 @@
   <script src="{{ url_for('static', filename='./static/js/app.js')}}"></script>
 </head>
 <body onLoad="createShotsViz();">
-  <div class="container-xxl" >
-    <div class="row">
-    <h2>Premier League</h2>
-    <p>Click on the buttons inside the tabbed menu:</p>
-    <div class="selections">
-    <!-- <form action="{{ url_for('selection') }}" method=post enctype=multipart/form-data ><p> -->
-      <!-- <label for="TeamA">Team: </label> -->Team:&nbsp; 
-      <select id="TeamA" name="TeamA" style="max-width:15%;">
-        <option value="Arsenal">Arsenal</option>
-        <option value="Aston Villa">Aston Villa</option> 
-        <option value="Bournemouth">Bournemouth</option> 
-        <option value="Brentford">Brentford</option> 
-        <option value="Brighton and Hove Albion">Brighton and Hove Albion</option> 
-        <option value="Burnley">Burnley</option>
-        <option value="Cardiff City">Cardiff City</option> 
-        <option value="Chelsea">Chelsea</option> 
-        <option value="Crystal Palace">Crystal Palace</option>
-        <option value="Everton">Everton</option> 
-        <option value="Fulham">Fulham</option> 
-        <option value="Huddersfield Town">Huddersfield Town</option> 
-        <option value="Leeds United">Leeds United</option> 
-        <option value="Leicester City">Leicester City</option>
-        <option value="Liverpool">Liverpool</option> 
-        <option value="Manchester City">Manchester City</option>
-        <option value="Manchester United">Manchester United</option> 
-        <option value="Newcastle United">Newcastle United</option> 
-        <option value="Norwich City">Norwich City</option> 
-        <option value="Sheffield United">Sheffield United</option> 
-        <option value="Southampton">Southampton</option>
-        <option value="Stoke City">Stoke City</option> 
-        <option value="Swansea City">Swansea City</option> 
-        <option value="Tottenham Hotspur">Tottenham Hotspur</option> 
-        <option value="Watford">Watford</option> 
-        <option value="West Bromwich Albion">West Bromwich Albion</option> 
-        <option value="West Ham United">West Ham United</option> 
-        <option value="Wolverhampton Wanderers">Wolverhampton Wanderers</option>
-      </select>&nbsp;versus&nbsp;Team:&nbsp; 
-        <!-- <label for="TeamB">Team: </label> -->
+  <div class="container-xxl" >  
+    <div class="hero__image">
+      <img src="https://www.galaxyfm.co.ug/wp-content/uploads/2020/08/watch-english-premier-league-live-online-free-banner.jpg" alt="Premier League" class="img-responsive" width="100%;">
+      <div class="hero-text">
+        <div class="selectionBox">
+        <p>Team:&nbsp; 
+        <select id="TeamA" name="TeamA" style="max-width:15%;">
+          <option value="Arsenal">Arsenal</option>
+          <option value="Aston Villa">Aston Villa</option> 
+          <option value="Bournemouth">Bournemouth</option> 
+          <option value="Brentford">Brentford</option> 
+          <option value="Brighton and Hove Albion">Brighton and Hove Albion</option> 
+          <option value="Burnley">Burnley</option>
+          <option value="Cardiff City">Cardiff City</option> 
+          <option value="Chelsea">Chelsea</option> 
+          <option value="Crystal Palace">Crystal Palace</option>
+          <option value="Everton">Everton</option> 
+          <option value="Fulham">Fulham</option> 
+          <option value="Huddersfield Town">Huddersfield Town</option> 
+          <option value="Leeds United">Leeds United</option> 
+          <option value="Leicester City">Leicester City</option>
+          <option value="Liverpool">Liverpool</option> 
+          <option value="Manchester City">Manchester City</option>
+          <option value="Manchester United">Manchester United</option> 
+          <option value="Newcastle United">Newcastle United</option> 
+          <option value="Norwich City">Norwich City</option> 
+          <option value="Sheffield United">Sheffield United</option> 
+          <option value="Southampton">Southampton</option>
+          <option value="Stoke City">Stoke City</option> 
+          <option value="Swansea City">Swansea City</option> 
+          <option value="Tottenham Hotspur">Tottenham Hotspur</option> 
+          <option value="Watford">Watford</option> 
+          <option value="West Bromwich Albion">West Bromwich Albion</option> 
+          <option value="West Ham United">West Ham United</option> 
+          <option value="Wolverhampton Wanderers">Wolverhampton Wanderers</option>
+        </select>&nbsp;versus&nbsp;Team:&nbsp; 
         <select id="TeamB" name="TeamB" style="max-width:15%;">
           <option value="Arsenal">Arsenal</option>
           <option value="Aston Villa">Aston Villa</option> 
@@ -80,22 +78,22 @@
           <option value="West Ham United">West Ham United</option> 
           <option value="Wolverhampton Wanderers">Wolverhampton Wanderers</option>
         </select>&nbsp; at: Venue&nbsp; 
-        <!-- <label for="venue"> at:</label> -->
         <select id="Venue" name="Venue" style="max-width:12%;">
           <option value="Home">Home</option>
           <option value="Away">Away</option> 
         </select>
-        <!-- <input type="Submit" value="Show me the Winner!"> -->
-        <button type="button" class="button" onclick="submit_btn()" style="width:15%;">Show me the Winner!</button><br>
-    <!-- </form> -->
-      </div><br><p></p>
-    </div>
+        <button type="button" class="button" onclick="submit_btn()" style="width:20%;">Show me the Winner!</button><br>
+      </div>
+      </div>
+    </div><br>
+  </div>
+    <div class="container-xxl" >
     <div class="row">
       <div class="tab">
         <button class="tablink" name="Home" onclick="openPage(event, 'Home')" id="defaultOpen">Home</button>        
         <button class="tablink" name="Prediction" onclick="openPage(event, 'Prediction')">Prediction</button>
         <button class="tablink" name="Dashboard" onclick="openPage(event, 'Dashboards')">Statistic</button>
-        <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots Overview</button>
+        <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots stats</button>
         <button class="tablink" name="About" onclick="openPage(event, 'About')">About</button>
       </div>
       <div id="Home" class="tabcontent">
@@ -118,12 +116,22 @@
   
       <div id="Stats" class="tabcontent">
         <h3>Average Shots by Months</h3>
+        <p>Review and compare the number of average shots by months for team.</p>
         <div id="vizContainerAvg" style="width: 100%; height:100%"></div>   
       </div>
   
       <div id="About" class="tabcontent">
         <h3>About</h3>
-        <p>About the data</p>
+        <p>The datasource used on this website are the Scores &#38; Fixtures record obtained from <a href="https://fbref.com/en/comps/9/Premier-League-Stats" target="_blank">FBref</a></p>
+        <!-- Side navigation for additional developer selection -->
+        <!-- <div id="sidebar" class="sidebar"> 
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+          <a href="{{ url_for('renew_data')}}">refresh data</a>
+          <a href="{{ url_for('getMatchData')}}">api</a>
+        </div>
+        <div id="main">
+          <button class="openbtn" onclick="openNav()">☰</button>  
+        </div> -->
       </div>
     </div>
 </body>

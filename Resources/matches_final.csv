@@ -1,4 +1,4 @@
-date,time,comp,round,day,venue,result,gf,ga,opponent,xg,xga,poss,attendance,captain,formation,referee,match report,sh,sot,dist,fk,pk,pkatt,season,team
+date,time,comp,round,day,venue,result,gf,ga,opponent,xg,xga,poss,attendance,captain,formation,referee,match_report,sh,sot,dist,fk,pk,pkatt,season,team
 2021-08-15,16:30,Premier League,Matchweek 1,Sun,Away,L,0,1,Tottenham,1.9,1.3,64.0,58262.0,Fernandinho,4-3-3,Anthony Taylor,Match Report,18.0,4.0,16.9,1.0,0.0,0.0,2022,Manchester City
 2021-08-21,15:00,Premier League,Matchweek 2,Sat,Home,W,5,0,Norwich City,2.7,0.1,67.0,51437.0,İlkay Gündoğan,4-3-3,Graham Scott,Match Report,16.0,4.0,17.3,1.0,0.0,0.0,2022,Manchester City
 2021-08-28,12:30,Premier League,Matchweek 3,Sat,Home,W,5,0,Arsenal,3.8,0.1,80.0,52276.0,İlkay Gündoğan,4-3-3,Martin Atkinson,Match Report,25.0,10.0,14.3,0.0,0.0,0.0,2022,Manchester City

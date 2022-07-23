@@ -1,12 +1,9 @@
 
-body {
+body, html {
   height: 150%;
-
   margin-bottom: 150px;
-  
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-
-  
+ 
   background-color: white
   }
 
@@ -47,7 +44,36 @@ body {
   border-top: none;
 }
 
-.button { 
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.galaxyfm.co.ug/wp-content/uploads/2020/08/watch-english-premier-league-live-online-free-banner.jpg");
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.selectionBox {
+  /* position: absolute; */
+  top: 65%;
+  left: 0;
+  width:1230px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  /* background-color: rgb(4, 245, 255, 0.5); */
+  background-color: rgb(255, 255, 255, 0.6);
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #3d195b;
+  font-weight: bolder;
+}
+.hero-text button { 
   /* background-color:#e7e7e7; */
   border: none;
   color: black;
@@ -63,3 +89,59 @@ body {
   border-radius: 2px;
 }
 
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 10px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}

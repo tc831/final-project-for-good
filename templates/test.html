@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.galaxyfm.co.ug/wp-content/uploads/2020/08/watch-english-premier-league-live-online-free-banner.jpg");
+  /* height: 10%; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 80%;
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="hero-image">
+  <div class="hero-text">
+Team:&nbsp; 
+        <select id="TeamA" name="TeamA" style="max-width:15%;">
+          <option value="Arsenal">Arsenal</option>
+          <option value="Aston Villa">Aston Villa</option> 
+          <option value="Bournemouth">Bournemouth</option> 
+          <option value="Brentford">Brentford</option> 
+          <option value="Brighton and Hove Albion">Brighton and Hove Albion</option> 
+          <option value="Burnley">Burnley</option>
+          <option value="Cardiff City">Cardiff City</option> 
+          <option value="Chelsea">Chelsea</option> 
+          <option value="Crystal Palace">Crystal Palace</option>
+          <option value="Everton">Everton</option> 
+          <option value="Fulham">Fulham</option> 
+          <option value="Huddersfield Town">Huddersfield Town</option> 
+          <option value="Leeds United">Leeds United</option> 
+          <option value="Leicester City">Leicester City</option>
+          <option value="Liverpool">Liverpool</option> 
+          <option value="Manchester City">Manchester City</option>
+          <option value="Manchester United">Manchester United</option> 
+          <option value="Newcastle United">Newcastle United</option> 
+          <option value="Norwich City">Norwich City</option> 
+          <option value="Sheffield United">Sheffield United</option> 
+          <option value="Southampton">Southampton</option>
+          <option value="Stoke City">Stoke City</option> 
+          <option value="Swansea City">Swansea City</option> 
+          <option value="Tottenham Hotspur">Tottenham Hotspur</option> 
+          <option value="Watford">Watford</option> 
+          <option value="West Bromwich Albion">West Bromwich Albion</option> 
+          <option value="West Ham United">West Ham United</option> 
+          <option value="Wolverhampton Wanderers">Wolverhampton Wanderers</option>
+        </select>&nbsp;versus&nbsp;Team:&nbsp; 
+          <!-- <label for="TeamB">Team: </label> -->
+          <select id="TeamB" name="TeamB" style="max-width:15%;">
+            <option value="Arsenal">Arsenal</option>
+            <option value="Aston Villa">Aston Villa</option> 
+            <option value="Bournemouth">Bournemouth</option> 
+            <option value="Brentford">Brentford</option> 
+            <option value="Brighton and Hove Albion">Brighton and Hove Albion</option> 
+            <option value="Burnley">Burnley</option>
+            <option value="Cardiff City">Cardiff City</option> 
+            <option value="Chelsea">Chelsea</option> 
+            <option value="Crystal Palace">Crystal Palace</option>
+            <option value="Everton">Everton</option> 
+            <option value="Fulham">Fulham</option> 
+            <option value="Huddersfield Town">Huddersfield Town</option> 
+            <option value="Leeds United">Leeds United</option> 
+            <option value="Leicester City">Leicester City</option>
+            <option value="Liverpool">Liverpool</option> 
+            <option value="Manchester City">Manchester City</option>
+            <option value="Manchester United">Manchester United</option> 
+            <option value="Newcastle United">Newcastle United</option> 
+            <option value="Norwich City">Norwich City</option> 
+            <option value="Sheffield United">Sheffield United</option> 
+            <option value="Southampton">Southampton</option>
+            <option value="Stoke City">Stoke City</option> 
+            <option value="Swansea City">Swansea City</option> 
+            <option value="Tottenham Hotspur">Tottenham Hotspur</option> 
+            <option value="Watford">Watford</option> 
+            <option value="West Bromwich Albion">West Bromwich Albion</option> 
+            <option value="West Ham United">West Ham United</option> 
+            <option value="Wolverhampton Wanderers">Wolverhampton Wanderers</option>
+          </select>&nbsp; at: Venue&nbsp; 
+          <!-- <label for="venue"> at:</label> -->
+          <select id="Venue" name="Venue" style="max-width:12%;">
+            <option value="Home">Home</option>
+            <option value="Away">Away</option> 
+          </select>
+          <!-- <input type="Submit" value="Show me the Winner!"> -->
+          <button type="button" class="button" onclick="submit_btn()">Show me the Winner!</button><br>
+  </div>
+</div>
+
+<p>Page Content..</p>
+
+</body>
+</html>
