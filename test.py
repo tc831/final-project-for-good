@@ -26,6 +26,19 @@ upcoming_matches = table[0]
 upcoming_matches = upcoming_matches[['Wk', 'Day', 'Date', 'Time', 'Home', 'Away', 'Venue']]
 upcoming_matches = upcoming_matches.dropna()
 
+browser = Browser('chrome', **executable_path, headless=False)    
+browser.visit(next_season_link)
+next_season_link = browser.html
+next_season_link_soup = bs(next_season_link, 'html.parser')
+# next_season_title = next_season_link_soup.find_all('div', class_='comps')
+
+next_season_title = next_season_link_soup.find('div', class_='comps')
+next_season_title1 = next_season_title.find('h1').text.strip('\t\r\n')
+
+nxt_season = next_season_title1.split("-")[1].split(" ")[0]
+browser.quit()
+
+upcoming_matches['season'] = nxt_season
 upcoming_matches['mod1'] = ''
 upcoming_matches['mod2'] = ''
 upcoming_matches['mod3'] = ''
@@ -48,9 +61,5 @@ if not database_exists(engine.url):
 else:
     # Connect the database if exists.
     engine.connect()
-# Execute a command: this creates a new table
-# engine.execute('DROP TABLE IF EXISTS upcoming_matches_table CASCADE;')
-# engine.execute('CREATE TABLE upcoming_matches_table (id INT, wk FLOAT, day VARCHAR, date DATE, ' 
-#             'time VARCHAR, home VARCHAR, away VARCHAR, venue VARCHAR);'
-#             )
+
 upcoming_matches_df.to_sql('upcoming_matches_df', con=engine, if_exists='replace')

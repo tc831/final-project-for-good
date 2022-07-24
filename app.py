@@ -125,6 +125,10 @@ def selection():
 #     else:
 #         return render_template ('index.html')
 
+@app.route("/upcoming_matches")
+def upcoming_matches():
+    init_db.upcoming_matches()
+    return redirect("/")
 
 @app.route("/renew_data")
 def renew_data():

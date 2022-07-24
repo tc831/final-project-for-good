@@ -90,11 +90,13 @@
     <div class="container-xxl" >
     <div class="row">
       <div class="tab">
-        <button class="tablink" name="Home" onclick="openPage(event, 'Home')" id="defaultOpen">Home</button>        
+        <button class="tablink" name="Home" id="defaultOpen" onclick="openPage(event, 'Home')" >Home</button>        
         <button class="tablink" name="Prediction" onclick="openPage(event, 'Prediction')">Prediction</button>
+        <button class="tablink" name="Prediction" onclick="openPage(event, 'upcoming')">Upcoming Matches</button>
         <button class="tablink" name="Dashboard" onclick="openPage(event, 'Dashboards')">Statistic</button>
         <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots stats</button>
         <button class="tablink" name="About" onclick="openPage(event, 'About')">About</button>
+        <button class="tablink" name="api" onclick="openPage(event, 'api')">api</button>
       </div>
       <div id="Home" class="tabcontent">
         <h3>Home</h3>
@@ -105,7 +107,10 @@
         <p>Prediction</p>
         <p>Winning team is {{ result }}</p>
       </div>
-  
+      <div id="upcoming" class="tabcontent">
+        <h3>Season</h3>
+        <p></p>
+      </div>
       <div id="Dashboards" class="tabcontent">
         <h3>Team Comparison</h3>
         <p>Use the filters below to cycle through the Seasons and see how accurate are the experts in pre-determinating the Expected Goals before each games as well as review past results by selecting an opponent or, compare your favourite teams results between seasons.</p>
@@ -120,7 +125,7 @@
         <p>Review and compare the number of average shots by months for team.</p>
         <div id="vizContainerAvg" style="width: 100%; height:100%"></div>   
       </div>
-  
+      
       <div id="About" class="tabcontent">
         <h3>About</h3>
         <p>The datasource used on this website are the Scores &#38; Fixtures record obtained from <a href="https://fbref.com/en/comps/9/Premier-League-Stats" target="_blank">FBref</a></p>
@@ -133,6 +138,17 @@
         <div id="main">
           <button class="openbtn" onclick="openNav()">☰</button>  
         </div> -->
+      </div>
+      <div id="api" class="tabcontent">
+        <!-- <h3>api</h3> -->
+        <h4>Get Json data</h4>
+        <p>Json data is available through <a href="{{ url_for('getMatchData')}}">here</a></p>
+        <br>
+        <h4>Refresh Data</h4>
+        <p>To retrieve latest results <a href="{{ url_for('renew_data')}}">here</a></p>
+        <br>
+        <h4>Upcoming Matches</h4>
+        <p>To load in upcoming matches details <a href="{{ url_for('upcoming_matches')}}">here</a></p>
       </div>
     </div>
 </body>

@@ -110,7 +110,7 @@ def retrieve_file():
 
     return matches_final
 
-def upcoming_matches ():
+def upcoming_matches():
     from splinter import Browser
     from bs4 import BeautifulSoup as bs
     import time
@@ -139,6 +139,19 @@ def upcoming_matches ():
     upcoming_matches = upcoming_matches[['Wk', 'Day', 'Date', 'Time', 'Home', 'Away', 'Venue']]
     upcoming_matches = upcoming_matches.dropna()
 
+    browser = Browser('chrome', **executable_path, headless=False)    
+    browser.visit(next_season_link)
+    next_season_link = browser.html
+    next_season_link_soup = bs(next_season_link, 'html.parser')
+    # next_season_title = next_season_link_soup.find_all('div', class_='comps')
+
+    next_season_title = next_season_link_soup.find('div', class_='comps')
+    next_season_title1 = next_season_title.find('h1').text.strip('\t\r\n')
+
+    nxt_season = next_season_title1.split("-")[1].split(" ")[0]
+    browser.quit()
+
+    upcoming_matches['season'] = nxt_season
     upcoming_matches['mod1'] = ''
     upcoming_matches['mod2'] = ''
     upcoming_matches['mod3'] = ''

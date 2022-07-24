@@ -6,6 +6,8 @@ var _ParamB ="Arsenal"
 
 var baseurl = "https://public.tableau.com/views/TeamStats_16582409510560/"
 
+
+
 function openPage(evt, xyz) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -22,25 +24,21 @@ function openPage(evt, xyz) {
   evt.currentTarget.className += " active";
 
   var _selpage = document.getElementById(xyz).id
-
 }
 
 // document.getElementById("defaultOpen").click();
-
+  
 function submit_btn() {
   var _ParamA = document.getElementById("TeamA").value;
   var _ParamB = document.getElementById("TeamB").value;
   console.log(_ParamA)
   console.log("button pressed")
-  if (_selpage="Dashboard") {
-    console.log*('createComparisonViz')
-    createComparisonViz(_ParamA, _ParamB);
-  } 
-  if (_selpage="Stats") {
-    console.log*('createShotsViz')
-    createShotsViz();
-  }
+  // if (_selpage="Dashboard") {
+  console.log*('createComparisonViz')
+  createComparisonViz(_ParamA, _ParamB);
+  // } 
 }
+
 function createComparisonViz(_ParamA, _ParamB) {
   // Home Team Viz url
 	// var _ParamA = "Manchester City"
@@ -110,4 +108,3 @@ function closeNav() {
   document.getElementById("sidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
-
