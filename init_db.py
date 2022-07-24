@@ -38,7 +38,7 @@ def scrape_data():
         data = requests.get(standings_url)
         soup = BeautifulSoup(data.text)
         standings_table = soup.select('table.stats_table')[0]
-
+        
         links = [l.get("href") for l in standings_table.find_all('a')]
         links = [l for l in links if '/squads/' in l]
         team_urls = [f"https://fbref.com{l}" for l in links]
@@ -106,18 +106,62 @@ def retrieve_file():
     else:
         # Connect the database if exists.
         engine.connect()
-    # Execute a command: this creates a new table
-    engine.execute('DROP TABLE IF EXISTS matches_final CASCADE;')
-    engine.execute('CREATE TABLE matches_final (id INT, date DATE, ' 
-                'time VARCHAR, comp VARCHAR, round VARCHAR, '
-                'day VARCHAR, venue VARCHAR, result VARCHAR, ' 
-                'gf INT, ga INT, opponent VARCHAR, xg FLOAT, '
-                'xga FLOAT, poss FLOAT, attendance FLOAT, ' 
-                'captain VARCHAR, formation VARCHAR, referee VARCHAR, '
-                'match_report VARCHAR, sh FLOAT, sot FLOAT, ' 
-                'dist FLOAT, fk FLOAT, pk FLOAT, pkatt FLOAT, season INT, '
-                'team VARCHAR);'
-                )
     matches_final.to_sql('matches_final', con=engine, if_exists='replace')
 
     return matches_final
+
+def upcoming_matches ():
+    from splinter import Browser
+    from bs4 import BeautifulSoup as bs
+    import time
+    from webdriver_manager.chrome import ChromeDriverManager
+    import pandas as pd
+
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+
+    base_url = 'https://fbref.com/'
+
+    scores_url = 'https://fbref.com/en/comps/9/schedule/Premier-League-Scores-and-Fixtures'
+
+    browser.visit(scores_url)
+
+    time.sleep(1)
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = bs(html, "html.parser")
+    next_season = soup.find("a", class_="next")
+    next_season_link = base_url + next_season["href"]
+    browser.quit()
+    table = pd.read_html(next_season_link)
+    upcoming_matches = table[0]
+    upcoming_matches = upcoming_matches[['Wk', 'Day', 'Date', 'Time', 'Home', 'Away', 'Venue']]
+    upcoming_matches = upcoming_matches.dropna()
+
+    upcoming_matches['mod1'] = ''
+    upcoming_matches['mod2'] = ''
+    upcoming_matches['mod3'] = ''
+    upcoming_matches['mod4'] = ''
+
+    upcoming_matches_df = upcoming_matches.iloc[1:]
+    upcoming_matches_df = upcoming_matches_df.reset_index(drop=True)
+
+    from sqlalchemy import create_engine
+    from sqlalchemy_utils import database_exists, create_database
+
+    from config import password
+
+    url = f'postgresql://postgres:{password}@localhost:5432/final_project'
+    engine = create_engine(url)
+
+    # Create database if doesn't exist
+    if not database_exists(engine.url):
+        create_database(engine.url)
+    else:
+        # Connect the database if exists.
+        engine.connect()
+
+    upcoming_matches_df.to_sql('upcoming_matches_df', con=engine, if_exists='replace')
+
+    return upcoming_matches
