@@ -82,7 +82,7 @@
           <option value="Home">Home</option>
           <option value="Away">Away</option> 
         </select>
-        <button type="button" class="button" onclick="submit_btn()" style="width:20%;">Show me the Winner!</button><br>
+        <button type="button" class="button" value="Submit" onclick="submit_btn()" style="width:20%;">Show me the Winner!</button><br>
       </div>
       </div>
     </div><br>
@@ -103,6 +103,7 @@
       <div id="Prediction" class="tabcontent">
         <h3>Prediction</h3>
         <p>Prediction</p>
+        <p>Winning team is {{ result }}</p>
       </div>
   
       <div id="Dashboards" class="tabcontent">

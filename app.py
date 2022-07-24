@@ -16,6 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = url
 app.debug = True
 db = SQLAlchemy(app)
 
+
 class matches(db.Model):
     __tablename__ = "matches_final"
     index = db.Column(db.Integer(), primary_key=True)
@@ -74,6 +75,34 @@ class matches(db.Model):
         self.season = season 
         self.team = team
 
+# class upcoming_mataches(db.Model):
+#     __tablename__ ="upcoming_matches_df"
+#     index = db.Column(db.Integer(), primary_key=True)
+#     wk = db.Column(db.Float(), nullable=False)
+#     day = db.Column(db.String(), nullable=False)
+#     date = db.Column(db.Date(), nullable=False)
+#     time  = db.Column(db.String(), nullable=False)
+#     home  = db.Column(db.String(), nullable=False)
+#     away = db.Column(db.String(), nullable=False)
+#     venue  = db.Column(db.String(), nullable=False)
+#     mod1 = db.Column(db.String(), nullable=True)
+#     mod2 = db.Column(db.String(), nullable=True)
+#     mod3 = db.Column(db.String(), nullable=True)
+#     mod4 = db.Column(db.String(), nullable=True)
+
+#     def __init__(self_up, wk, day, date, time, home, away, venue, mod1, mod2, mod3, mod4):
+#         self_up.wk = wk
+#         self_up.day = day
+#         self_up.date = date
+#         self_up.time = time
+#         self_up.home = home
+#         self_up.away = away
+#         self_up.venue = venue
+#         self_up.mod1 = mod1
+#         self_up.mod2 = mod2
+#         self_up.mod3 = mod3
+#         self_up.mod4 = mod4
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -84,9 +113,18 @@ def selection():
         print(request.form)
         teamA = request.form['TeamA']
         teamB = request.form['TeamB']
-        return render_template('index.html')
+
+        return render_template('index.html', result=teamA)
     else:
         return render_template('index.html')        
+
+# @app.route("/", methods=['POST', 'GET'])
+# def upcoming_results():
+#     if request.mehod=='POST':
+#         return render_template('index.html')
+#     else:
+#         return render_template ('index.html')
+
 
 @app.route("/renew_data")
 def renew_data():
