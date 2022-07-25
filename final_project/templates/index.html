@@ -19,14 +19,14 @@
         <div class="selectionBox">
         <p>Team:&nbsp; 
         <select id="TeamA" name="TeamA" style="max-width:15%;">
-          {% for t in t_list %}
+          <!-- {% for t in t_list %}
             <option value={{ t['team']}}>{{ t['team']}}</option>
-          {% endfor %}
+          {% endfor %} -->
         </select>&nbsp;versus&nbsp;Team:&nbsp; 
         <select id="TeamB" name="TeamB" style="max-width:15%;">
-          {% for t in t_list %}
+          <!-- {% for t in t_list %}
             <option value={{ t['team']}}>{{ t['team']}}</option>
-          {% endfor %}
+          {% endfor %} -->
         </select>&nbsp; at: Venue&nbsp; 
         <select id="Venue" name="Venue" style="max-width:12%;">
           <option value="Home">Home</option>
@@ -46,7 +46,7 @@
         <button class="tablink" name="Dashboard" onclick="openPage(event, 'Dashboards')">Statistic</button>
         <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots stats</button>
         <button class="tablink" name="About" onclick="openPage(event, 'About')">About</button>
-        <button class="tablink" name="api" onclick="openPage(event, 'api')">api</button>
+        <!-- <button class="tablink" name="api" onclick="openPage(event, 'api')">api</button> -->
       </div>
       <div id="Home" class="tabcontent">
         <h3>Home</h3>
@@ -59,16 +59,16 @@
           <p>
           <label for="team">What is your team?</label>
           <select id="team" name="team">
-          {% for t in t_list %}
+          <!-- {% for t in t_list %}
             <option value={{ t['team']}}>{{ t['team']}}</option>
-          {% endfor %}
+          {% endfor %} -->
           </select>
           <label for="opponent">What is the opponent</label>
           <select id="opponent" name="opponent">
-          {% for t in t_list %}
+          <!-- {% for t in t_list %}
             <option value={{ t['team']}}>{{ t['team']}}</option>
           {% endfor %}
-          </select>
+          </select> -->
           <br>
           <label for="Venue">Where do they play</label>
           <select id="venue" name="venue">
@@ -103,12 +103,12 @@
         <div class="content upcoming_matches">Show Week&nbsp;&nbsp; 
           <select id="match_week" name="match_week" type="number" onchange="selWeekFunction()">
             <option value="" disabled selected>All</option>
-            {% for wk in weeknum_list %}
+            <!-- {% for wk in weeknum_list %}
               <option value={{ wk}}>{{ wk}}</option>
-            {% endfor %}
+            {% endfor %} -->
           </select>
           <button type="button" class="button" value="Submit">Predict</button><p></p>
-          <table id="upcoming_matches" class="table table-striped" border="2.0" style="width:100%">
+          <!-- <table id="upcoming_matches" class="table table-striped" border="2.0" style="width:100%">
             <thead>
               <tr>
                 <th style="width:auto" scope="col">Wk</th>
@@ -137,7 +137,7 @@
               </tr>
               {% endfor %} 
             </tbody>
-          </table>
+          </table> -->
         </div>
       </div>
       <div id="Dashboards" class="tabcontent">
@@ -160,17 +160,7 @@
         <p>The datasource used on this website are the Scores &#38; Fixtures record obtained from <a href="https://fbref.com/en/comps/9/Premier-League-Stats" target="_blank">FBref</a></p>
 
       </div>
-      <div id="api" class="tabcontent">
-        <!-- <h3>api</h3> -->
-        <h4>Get Json data</h4>
-        <p>Json data is available through <a href="{{ url_for('getMatchData')}}">here</a></p>
-        <br>
-        <h4>Refresh Data</h4>
-        <p>To retrieve latest results <a href="{{ url_for('renew_data')}}">here</a></p>
-        <br>
-        <h4>Upcoming Matches</h4>
-        <p>To load in upcoming matches details <a href="{{ url_for('upcoming_matches')}}">here</a></p>
-      </div>
+
     </div>
 </body>
 </html> 
