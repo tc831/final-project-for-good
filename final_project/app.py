@@ -7,7 +7,7 @@ import init_db
 import pandas as pd
 import os
 
-url = f'postgresql://postgres:{password}@localhost:5432/final_project'
+url = f'postgresql://postgres:{password}@pttvyikevjlojx:98f7bcd7a7df7f7fb344c1162acc9a8d007ff45f7994a13be4459aeef8538ac1@ec2-54-225-234-165.compute-1.amazonaws.com:5432/d2nllq2u6n9r7k'
 # engine = create_engine(url)
 app = Flask(__name__)
 app = Flask(__name__, static_folder="templates")
