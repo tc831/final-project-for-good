@@ -7,14 +7,9 @@ from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 import os
 
-<<<<<<< HEAD
-# #url = f'postgres://psql:pttvyikevjlojx:{password}@ec2-54-225-234-165.compute-1.amazonaws.com:5432/d2nllq2u6n9r7k'
-# url = "postgres://psql:pttvyikevjlojx:98f7bcd7a7df7f7fb344c1162acc9a8d007ff45f7994a13be4459aeef8538ac1@ec2-54-225-234-165.compute-1.amazonaws.com:5432/d2nllq2u6n9r7k"
-=======
 #url = f'postgresql://postgres:{password}@localhost:5432/final_project'
 #url = f'postgres://psql:pttvyikevjlojx:{password}@ec2-54-225-234-165.compute-1.amazonaws.com:5432/d2nllq2u6n9r7k'
-url = "postgres://pttvyikevjlojx:98f7bcd7a7df7f7fb344c1162acc9a8d007ff45f7994a13be4459aeef8538ac1@ec2-54-225-234-165.compute-1.amazonaws.com:5432/d2nllq2u6n9r7k"
->>>>>>> cb32f24fd8565f4521800747411898013c894ca9
+# url = "postgres://pttvyikevjlojx:98f7bcd7a7df7f7fb344c1162acc9a8d007ff45f7994a13be4459aeef8538ac1@ec2-54-225-234-165.compute-1.amazonaws.com:5432/d2nllq2u6n9r7k"
 
 # engine = create_engine(url)
 app = Flask(__name__)
