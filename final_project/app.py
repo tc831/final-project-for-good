@@ -45,12 +45,7 @@ def calculate_outcomes(day, venue, xg, xga, team, opponent):
     return y[0]
 
 
-@app.route("/")
-def home():
-    return render_template('index.html')
-
-
-@app.route("/machinelearning", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def streambyte():
     # your file processing code is here...
     if request.method=='POST':
@@ -73,10 +68,10 @@ def streambyte():
         else:
             result = 'Win'
 
-        return render_template('machinelearning.html',  result = result)
+        return render_template('index.html',  result = result)
     
     else:
-        return render_template('machinelearning.html')
+        return render_template('index.html')
 
 
 if __name__ == '__main__':

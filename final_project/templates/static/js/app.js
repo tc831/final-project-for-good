@@ -132,3 +132,5 @@ function selWeekFunction() {
 window.onload = function() {
   document.getElementById('Home').click();
 };
+$("inputtype='submit']").click(function(){return false;});
+
