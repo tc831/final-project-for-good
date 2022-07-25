@@ -14,7 +14,7 @@ The data source that we have chosen to use contains information from 2017 to 202
 
 The idea is to gather the data, then use historic win-loss-draw with Goals For and against to get prediction on the selected match.
 
-The method and language used are Python, Pandas, Postgres and Tableau. Once the data was cleaned we used ML to then populate the results shown on 
+The method and language used are Python, Pandas, Postgres, Tableau and Heroku. Once the data was cleaned we used ML to then populate the results shown on 
 
 ## Code
 
