@@ -12,7 +12,7 @@ app = Flask(__name__, static_folder="templates")
 
 
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/")
 def index():
 
     return render_template("index.html")
