@@ -27,7 +27,11 @@ File overview:
 * data_clean.ipynb
 * project_3_scraping.ipynb
 * schema.sql
-
+* Templates
+* Procfile
+* app.py
+* init_db.py
+* requirements.txt
 
 
 ## Installation
