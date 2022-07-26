@@ -52,8 +52,13 @@ def streambyte():
         day = request.form['day']
         venue = request.form['venue']
         xg = request.form['xg']
+        if xg == '':
+            xg = 0.1
         xg = float(xg)
+
         xga = request.form['xga']
+        if xga == '':
+            xga = 0.1
         xga = float(xga)
         team = request.form['team']
         opponent = request.form['opponent']

@@ -63,6 +63,9 @@ body, html {
   /* background-color: rgb(4, 245, 255, 0.5); */
   background-color: rgb(255, 255, 255, 0.6);
 }
+.results {
+  font-size: 20px;
+}
 
 .hero-text {
   text-align: center;
@@ -115,6 +118,8 @@ body, html {
   color: white;
 }
 
+
+/* 
 .sidebar {
   height: 100%;
   width: 0;
@@ -165,4 +170,4 @@ body, html {
 #main {
   transition: margin-left .5s;
   padding: 16px;
-}
+} */

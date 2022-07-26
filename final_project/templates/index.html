@@ -78,7 +78,7 @@
           <option value='West Ham'>West Ham</option>
           <option value='Wolves'>Wolves</option>&nbsp; 
         </select>
-        <button type="button" class="button" value="Submit" onclick="submit_btn()" style="width:20%;">Show me the Winner!</button><br>
+        <button type="button" class="button" value="Submit" onclick="submit_btn()" style="width:20%;">Show me the Stats!</button><br>
       </div>
       </div>
     </div><br>
@@ -86,18 +86,18 @@
     <div class="container-xxl" >
     <div class="row">
       <div class="tab">
-        <button class="tablink" name="Home" id="defaultOpen" onclick="openPage(event, 'Home')" >Home</button>        
-        <button class="tablink" name="Prediction" id="test" onclick="openPage(event, 'Prediction')">Prediction</button>
-        <button class="tablink" name="Dashboard" onclick="openPage(event, 'Dashboards')">Statistic</button>
-        <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots stats</button>
-        <button class="tablink" name="About" onclick="openPage(event, 'About')">About</button>
+        <!-- <button class="tablink" name="Home" id="defaultOpen" onclick="openPage(event, 'Home')" >Home</button>         -->
+        <button class="tablink" name="Dashboard" onclick="openPage(event, 'Dashboards')">Stats</button>
+        <button class="tablink" name="Prediction" id="test" onclick="openPage(event, 'Prediction')">The winning team is ...</button>
+        <!-- <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots stats</button> -->
+        <!-- <button class="tablink" name="About" onclick="openPage(event, 'About')">About</button> -->
       </div>
       <div id="Home" class="tabcontent">
         <h3>Home</h3>
         <p>How it works</p>
       </div>
       <div id="Prediction" class="tabcontent">
-        <h3>Prediction</h3>
+        <!-- <h3>Prediction</h3> -->
         <form id='myForm' method=post enctype=multipart/form-data >
           <p>
           <label for="team">What is your team?</label>
@@ -178,14 +178,14 @@
              <option value="5">Saturday</option>
              <option value="6">Sunday<option>
           </select><br>
-          <label for="xg">What is xg for your team?</label><br>       
-          <input type="text" id="xg" name="xg"><br>
-          <label for="xg">What is xga for the opponent?</label><br>
-          <input type="text" id="xga" name="xga"><br><br>
+          <label for="xg">What is xg for your team?</label>    
+          <input type="number" id="xg" name="xg" min="0" max="5"><br>
+          <label for="xg">What is xga for the opponent?</label>
+          <input type="number" id="xga" name="xga" min="0" max="5"><br><br>
           <button id="button" type="submit" value="submit" class="btn btn-primary" onclick="return foo(event);">Submit</button>
        </form>
 
-        <p id="results">Expected result is {{ result }}</p>
+        <p id="results"></p>
       </div>
       <div id="Dashboards" class="tabcontent">
         <h3>Team Comparison</h3>
@@ -194,6 +194,7 @@
           <div id="vizContainer" style="width:50%; height:100%;"></div>   
           <div id="vizContainer1" style="width:50%; height:100%;"></div>   
         </div>
+        <div id="vizContainerAvg" style="width: 100%; height:100%"></div>   
       </div>
   
       <div id="Stats" class="tabcontent">
