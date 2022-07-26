@@ -21,16 +21,12 @@ The method and language used are Python, Pandas, Postgres, Tableau and Heroku. O
 You can find the code for this project [here](https://github.com/tc831/final-project-for-good)
 File overview:
 
-* Folder: ipynb_checkpoints
-* Resources
-* config.py
+* Folder: Templates
+* Folder: Resources
 * data_clean.ipynb
 * project_3_scraping.ipynb
-* schema.sql
-* Templates
 * Procfile
 * app.py
-* init_db.py
 * requirements.txt
 
 
