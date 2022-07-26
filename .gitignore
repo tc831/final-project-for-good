@@ -5,3 +5,4 @@
 /templates/*.bak
 /templates/static/css/*.bak
 /templates/static/js/*.bak
+final_project/config.py
