@@ -132,5 +132,40 @@ function selWeekFunction() {
 window.onload = function() {
   document.getElementById('Home').click();
 };
-$("inputtype='submit']").click(function(){return false;});
 
+
+var form = document.getElementById("myForm");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
+
+
+// function foo() {
+//   document.getElementById("test").click();
+//   return false;
+// }
+
+function foo(event) {
+  event.preventDefault();
+  let team = document.getElementById("team").value;
+  let opponent = document.getElementById("opponent").value;
+  let venue = document.getElementById("venue").value;
+  let day = document.getElementById("day").value;
+  let xg = document.getElementById("xg").value;
+  let xga = document.getElementById("xga").value;
+
+
+  fetch("/", {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: "team="+team+"&opponent="+opponent+"&venue="+venue+"&day="+day+"&xg="+xg+"&xga="+xga
+  })
+  .then((response) => response.text())
+  .then((responseText) => {
+    document.getElementById("results").innerHTML ="Expected result is " + responseText;
+  })
+  .catch((error) => {
+      console.error(error);
+  });
+}

@@ -87,7 +87,7 @@
     <div class="row">
       <div class="tab">
         <button class="tablink" name="Home" id="defaultOpen" onclick="openPage(event, 'Home')" >Home</button>        
-        <button class="tablink" name="Prediction" onclick="openPage(event, 'Prediction')">Prediction</button>
+        <button class="tablink" name="Prediction" id="test" onclick="openPage(event, 'Prediction')">Prediction</button>
         <button class="tablink" name="Dashboard" onclick="openPage(event, 'Dashboards')">Statistic</button>
         <button class="tablink" name="Shots" onclick="openPage(event, 'Stats')">Shots stats</button>
         <button class="tablink" name="About" onclick="openPage(event, 'About')">About</button>
@@ -98,7 +98,7 @@
       </div>
       <div id="Prediction" class="tabcontent">
         <h3>Prediction</h3>
-        <form onsubmit="return false" method=post enctype=multipart/form-data >
+        <form id='myForm' method=post enctype=multipart/form-data >
           <p>
           <label for="team">What is your team?</label>
           <select id="team" name="team">
@@ -182,11 +182,10 @@
           <input type="text" id="xg" name="xg"><br>
           <label for="xg">What is xga for the opponent?</label><br>
           <input type="text" id="xga" name="xga"><br><br>
-
-          <button type="submit" value="Submit" id="search_form_input">
+          <button id="button" type="submit" value="submit" class="btn btn-primary" onclick="return foo(event);">Submit</button>
        </form>
 
-        <p>Winning team is {{ result }}</p>
+        <p id="results">Expected result is {{ result }}</p>
       </div>
       <div id="Dashboards" class="tabcontent">
         <h3>Team Comparison</h3>

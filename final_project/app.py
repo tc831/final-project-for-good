@@ -12,7 +12,7 @@ import numpy as np
 
 app = Flask(__name__)
 app = Flask(__name__, static_folder="templates")
-
+app.config['CORS_HEADERS'] = 'Content-Type'
 filename = 'finalized_model.sav'
 filename_minmax ='min_max_scalar.sav'
 
@@ -68,7 +68,7 @@ def streambyte():
         else:
             result = 'Win'
 
-        return render_template('index.html',  result = result)
+        return result
     
     else:
         return render_template('index.html')
