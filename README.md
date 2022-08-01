@@ -3,7 +3,7 @@
 * Hiu Lai
 * Joanna Sacharz
 * Maica Tran
-* Sak Qasse
+* Sakariya  Qasse
 * David Cheung
 
 
